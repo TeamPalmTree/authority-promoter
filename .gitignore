@@ -11,4 +11,6 @@ build
 .idea
 nbproject/
 /config/db.php
+/config/simpleauth.php
 /config/*/db.php
+/config/*/simpleauth.php
