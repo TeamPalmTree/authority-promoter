@@ -3,9 +3,24 @@
 class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
 {
 
+    public function before()
+    {
+        // forward up
+        parent::before();
+        // load promoter config
+        Config::load('promoter', true);
+    }
+
     public function action_index()
     {
-        return Response::forge(View::forge('promoter/index'));
+        // create view
+        $view = View::forge('promoter/index');
+        // set view url variables
+        $view->provider_url = Config::get('promoter.authority_url') . '/authority/login/facebook';
+        $view->callback_url = Config::get('promoter.base_url') . '/promoter/callback';
+        $view->redirect_url = Config::get('promoter.base_url') . '/' . Config::get('promoter.redirect_path');
+        // success
+        return Response::forge($view);
     }
 
     public function action_login()
@@ -16,9 +31,8 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
             // check credentials
             if (Auth::login())
             {
-                // Credentials ok, go right in.
-                Response::redirect('manager');
-                return;
+                // credentials ok, go right in
+                Response::redirect(Config::get('promoter.base_url') . '/' . Config::get('promoter.redirect_path'));
             }
             else
             {
@@ -34,6 +48,14 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
         $redirect_url = urldecode($_GET['redirect_url']);
         // redirect :)
         return Response::redirect($redirect_url, 'refresh');
+    }
+
+    public function action_logout()
+    {
+        // logout user
+        Auth::logout();
+        // redirect to login
+        Response::redirect(Config::get('promoter.base_url'));
     }
 
 }
