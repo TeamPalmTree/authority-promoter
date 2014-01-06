@@ -19,7 +19,7 @@
         <div class="promoter-login-container">
             <div class="promoter-login-button">
                 <a href="/authority/login/facebook?callback_url=<?php echo urlencode('http://authority.teampalmtree.com/promoter/callback/'); ?>&redirect_url=<?php echo urlencode('http://authority.teampalmtree.com/manager'); ?>">
-                    <img src="/assets/img/login.png" />
+                    <img src="/assets/shared/img/login.png" />
                 </a>
             </div>
             <div class="promoter-login-form">
