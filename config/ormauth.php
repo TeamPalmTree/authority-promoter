@@ -67,13 +67,13 @@ return array(
 		'expiration' => 86400 * 31,
 	),
 
-	/**
-	 * This will allow the same user to be logged in multiple times.
-	 *
-	 * Note that this is less secure, as session hijacking countermeasures have to
-	 * be disabled for this to work!
-	 */
-	'multiple_logins' => false,
+    /**
+     * This will allow the same user to be logged in multiple times.
+     *
+     * Note that this is less secure, as session hijacking countermeasures have to
+     * be disabled for this to work!
+     */
+    'multiple_logins' => true,
 
 	/**
 	 * Salt for the login hash
