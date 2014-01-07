@@ -11,6 +11,12 @@ build
 .idea
 nbproject/
 /config/db.php
+/config/auth.php
+/config/ormauth.php
+/config/promoter.php
 /config/simpleauth.php
 /config/*/db.php
+/config/*/auth.php
+/config/*/ormauth.php
+/config/*/promoter.php
 /config/*/simpleauth.php
