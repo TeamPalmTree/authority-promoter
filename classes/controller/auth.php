@@ -4,16 +4,16 @@ class Controller_Auth extends Controller_Hybrid
 {
 
     protected $anonymous_methods = array();
+    protected $is_authenticated = false;
     protected $is_restful = false;
 
     public function router($method, $params)
     {
 
         // authenticate
-        if ($this->authenticate($method))
-            parent::router($method, $params);
-        else
-            Response::redirect();
+        $this->is_authenticated = $this->authenticate($method);
+        // forward
+        parent::router($method, $params);
 
     }
 
@@ -55,6 +55,9 @@ class Controller_Auth extends Controller_Hybrid
         // AUTH CHECK //
         ////////////////
 
+        // set restful
+        $this->is_restful = $this->is_restful();
+        // success
         return Auth::check();
 
     }
