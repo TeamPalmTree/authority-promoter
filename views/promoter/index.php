@@ -19,11 +19,11 @@
         <div class="promoter-login-container">
             <div class="promoter-login-button">
                 <a href="<?php echo $provider_url; ?>?callback_url=<?php echo urlencode($callback_url); ?>&redirect_url=<?php echo urlencode($redirect_url); ?>">
-                    <img src="/assets/shared/img/login.png" />
+                    <img src="/assets/shared/img/login/button-<?php echo $size; ?>.png" />
                 </a>
             </div>
             <div class="promoter-login-form">
-                <?php echo Form::open(array('id' => 'welcome-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
+                <?php echo Form::open(array('id' => 'promoter-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
                     <div class="form-group">
                         <input name="username" type="text" class="form-control" placeholder="Username" />
                     </div>
