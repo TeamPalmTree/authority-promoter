@@ -68,7 +68,6 @@ class Model_User extends \Auth\Model\Auth_User
         $users = DB::select('username')
             ->from('users')
             ->where('id', $id)
-            ->as_object()
             ->execute(self::$_connection);
 
         // verify we got it
