@@ -19,20 +19,20 @@
         <div class="promoter-login-container">
             <div class="promoter-login-button">
                 <a href="<?php echo $provider_url; ?>?callback_url=<?php echo urlencode($callback_url); ?>&redirect_url=<?php echo urlencode($redirect_url); ?>">
-                    <img src="/assets/shared/img/login/button-<?php echo $size; ?>.png" />
+                    <img src="/assets/shared/img/login.png" />
                 </a>
             </div>
             <div class="promoter-login-form">
-                <?php echo Form::open(array('id' => 'promoter-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
-                    <div class="form-group">
-                        <input name="username" type="text" class="form-control" placeholder="Username" />
-                    </div>
-                    <div class="form-group">
-                        <input name="password" type="password" class="form-control" placeholder="Password" />
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default btn-primary" form="welcome-form">LOGIN</button>
-                    </div>
+                <?php echo Form::open(array('id' => 'welcome-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Password" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default btn-primary" form="welcome-form">LOGIN</button>
+                </div>
                 <?php echo Form::close(); ?>
             </div>
         </div>
