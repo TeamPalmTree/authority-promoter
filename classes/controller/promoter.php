@@ -47,7 +47,7 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
         // get redirect url
         $redirect_url = urldecode($_GET['redirect_url']);
         // redirect :)
-        return Response::redirect($redirect_url, 'refresh');
+        Response::redirect($redirect_url);
     }
 
     public function action_logout()
