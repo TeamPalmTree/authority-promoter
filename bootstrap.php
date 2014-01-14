@@ -8,4 +8,5 @@ Autoloader::add_classes(array(
     'Controller_Promoter'   => __DIR__.'/classes/controller/promoter.php',
     'Model_User' => __DIR__.'/classes/model/user.php',
     'Promoter' => __DIR__.'/classes/promoter.php',
+    'HttpAccessDeniedException'   => __DIR__.'/classes/exceptions.php',
 ));
