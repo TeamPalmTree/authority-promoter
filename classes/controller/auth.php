@@ -4,14 +4,23 @@ class Controller_Auth extends Controller_Hybrid
 {
 
     protected $anonymous_methods = array();
+    protected $is_anonymous = false;
     protected $is_authenticated = false;
     protected $is_restful = false;
+
+    public function before()
+    {
+        // forward
+        parent::before();
+        // set restful (initially from request)
+        $this->is_restful = $this->is_restful();
+    }
 
     public function router($method, $params)
     {
 
         // authenticate
-        $this->is_authenticated = $this->authenticate($method);
+        $this->authenticate($method);
         // forward
         parent::router($method, $params);
 
@@ -35,9 +44,8 @@ class Controller_Auth extends Controller_Hybrid
         // if we have a key, validate against that
         if ($key == $promoter_key)
         {
-            // we are restful & authorized
+            // we are restful
             $this->is_restful = true;
-            return true;
         }
 
         //////////////////////////
@@ -46,19 +54,18 @@ class Controller_Auth extends Controller_Hybrid
 
         if (in_array($rest_method, $this->anonymous_methods))
         {
-            // we are restful & authorized
+            // we are restful
             $this->is_restful = true;
-            return true;
+            // we are anonymous
+            $this->is_anonymous = true;
         }
 
         ////////////////
         // AUTH CHECK //
         ////////////////
 
-        // set restful
-        $this->is_restful = $this->is_restful();
         // success
-        return Auth::check();
+        $this->is_authenticated = Auth::check();
 
     }
 
