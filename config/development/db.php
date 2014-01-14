@@ -5,7 +5,7 @@ return array(
         'connection'  => array(
             'dsn'        => 'mysql:host=authority;dbname=authority',
             'username'   => 'root',
-            'password'   => '',
+            'password'   => 'mysql',
         ),
         'type'        => 'pdo',
         'identifier'   => '`',
