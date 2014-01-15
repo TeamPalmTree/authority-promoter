@@ -3,10 +3,10 @@
 class Controller_Auth extends Controller_Hybrid
 {
 
-    protected $anonymous_methods = array();
-    protected $is_anonymous = false;
-    protected $is_authenticated = false;
-    protected $is_restful = false;
+    protected $anonymous_rest_methods = array();
+    protected $is_key_authenticated = false;
+    protected $is_user_authenticated = false;
+    protected $is_anonymous_authenticated = false;
 
     public function before()
     {
@@ -31,41 +31,27 @@ class Controller_Auth extends Controller_Hybrid
 
         // get some auth parameters
         $key = Input::get('key');
-        $rest_method = get_class($this) . '.' . $method;
         // load promoter configuration
         Config::load('promoter', true);
         // get promoter key
         $promoter_key = Config::get('promoter.key');
 
-        ///////////////
-        // KEY CHECK //
-        ///////////////
-
         // if we have a key, validate against that
         if ($key == $promoter_key)
-        {
-            // we are restful
-            $this->is_restful = true;
-        }
+            $this->is_key_authenticated = true;
+        else
+            $this->is_user_authenticated = Auth::check();
 
-        //////////////////////////
-        // ANONYMOUS REST CHECK //
-        //////////////////////////
+        // get rest method from router method
+        $rest_method = get_class($this) . '.' . $method;
+        // see if we have it in our lest of anon methods
+        if (!in_array($rest_method, $this->anonymous_rest_methods))
+            return;
 
-        if (in_array($rest_method, $this->anonymous_methods))
-        {
-            // we are restful
-            $this->is_restful = true;
-            // we are anonymous
-            $this->is_anonymous = true;
-        }
-
-        ////////////////
-        // AUTH CHECK //
-        ////////////////
-
-        // success
-        $this->is_authenticated = Auth::check();
+        // force input to rest status
+        $_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+        // we are anonymous
+        $this->is_anonymous_authenticated = true;
 
     }
 
