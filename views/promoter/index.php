@@ -23,7 +23,7 @@
                 </a>
             </div>
             <div class="promoter-login-form">
-                <?php echo Form::open(array('id' => 'welcome-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
+                <?php echo Form::open(array('id' => 'welcome-form', 'action' => 'promoter/login?&redirect_url=' . urlencode($redirect_url), 'class' => 'form-horizontal')); ?>
                 <div class="form-group">
                     <input name="username" type="text" class="form-control" placeholder="Username" />
                 </div>
