@@ -2,6 +2,8 @@
 
 namespace Promoter\Model;
 
+use Fuel\Core\DB;
+
 class Promoter_User extends \Auth\Model\Auth_User
 {
 
@@ -25,7 +27,7 @@ class Promoter_User extends \Auth\Model\Auth_User
             return null;
 
         // get usernames
-        $users = DB::select('username')
+        $users = \Fuel\Core\DB::select('username')
             ->from('users')
             ->where('id', $id)
             ->execute(self::$_connection);
