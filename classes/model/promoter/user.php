@@ -2,7 +2,7 @@
 
 namespace Promoter\Model;
 
-class Model_User extends \Auth\Model\Auth_User
+class Promoter_User extends \Auth\Model\Auth_User
 {
 
     protected static $_connection = 'authority';
@@ -60,7 +60,7 @@ class Model_User extends \Auth\Model\Auth_User
     {
 
         // start users query
-        $users_query = Model_User::query()
+        $users_query = Promoter_User::query()
             ->select('username', 'group_id', 'email')
             ->order_by('username', 'ASC')
             ->limit(1000);
@@ -114,6 +114,11 @@ class Model_User extends \Auth\Model\Auth_User
             ->where('id', 'IN', $shared_user_ids)
             ->order_by('username', 'ASC')
             ->get();
+    }
+
+    public function metadata($fields)
+    {
+        return
     }
 
 }
