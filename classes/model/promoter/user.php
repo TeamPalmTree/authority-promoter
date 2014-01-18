@@ -116,9 +116,22 @@ class Promoter_User extends \Auth\Model\Auth_User
             ->get();
     }
 
-    public function metadata($fields)
+    public function mapped_metadata($field_names)
     {
-        return
+
+        // get metadata
+        $metadatas = Promoter_Metadata::query()
+            ->where('parent_id', $this->id)
+            ->where('key', 'IN', $field_names)
+            ->get();
+
+        $mapped_metadata = array();
+        // map into array
+        foreach ($metadatas as $metadata)
+            $mapped_metadata[$metadata->key] = $metadata->value;
+        // success
+        return $mapped_metadata;
+
     }
 
 }
