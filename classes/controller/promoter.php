@@ -31,8 +31,10 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
             // check credentials
             if (Auth::login())
             {
+                // get redirect url
+                $redirect_url = urldecode($_GET['redirect_url']);
                 // credentials ok, go right in
-                Response::redirect(Config::get('promoter.base_url') . '/' . Config::get('promoter.redirect_path'));
+                Response::redirect($redirect_url);
             }
             else
             {
