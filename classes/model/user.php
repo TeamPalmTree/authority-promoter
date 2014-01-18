@@ -47,7 +47,7 @@ class Model_User extends \Auth\Model\Auth_User
 
     }
 
-    public static function usernames($query)
+    public static function search_usernames($query)
     {
         $users = DB::select('username')
             ->from('users')
@@ -75,6 +75,24 @@ class Model_User extends \Auth\Model\Auth_User
             return null;
         // success
         return $users[0]['username'];
+
+    }
+
+    public static function usernames($ids)
+    {
+
+        // get usernames
+        $users = DB::select('id', 'username')
+            ->from('users')
+            ->where('id', 'IN', $ids)
+            ->execute(self::$_connection);
+
+        $usernames = array();
+        // map to array
+        foreach ($users as $user)
+            $usernames[$user['id']] = $user['username'];
+        // success
+        return $usernames;
 
     }
 

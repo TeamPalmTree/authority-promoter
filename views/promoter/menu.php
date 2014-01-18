@@ -21,7 +21,7 @@
         <li class="divider"></li>
         <li>
             <a>
-                <?php echo Form::open(array('id' => 'promoter-form', 'action' => 'promoter/login', 'class' => 'form-horizontal')); ?>
+                <?php echo Form::open(array('id' => 'promoter-form', 'action' => 'promoter/login?&redirect_url=' . urlencode($redirect_url), 'class' => 'form-horizontal')); ?>
                 <input name="username" type="text" class="form-control" placeholder="USERNAME" />
                 <input name="password" type="password" class="form-control" placeholder="PASSWORD" />
                 <?php echo Form::close(); ?>
