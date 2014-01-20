@@ -43,6 +43,10 @@ class Promoter_User extends \Auth\Model\Auth_User
     public static function usernames($ids)
     {
 
+        // verify we got ids
+        if (count($ids) == 0)
+            return array();
+
         // get usernames
         $users = DB::select('id', 'username')
             ->from('users')

@@ -42,16 +42,19 @@ class Controller_Auth extends Controller_Hybrid
         else
             $this->is_user_authenticated = Auth::check();
 
+        // get rest class
+        $rest_class = get_class($this) . '.*';
         // get rest method from router method
-        $rest_method = get_class($this) . '.' . $method;
+        $rest_method = $rest_class . '.' . $method;
         // see if we have it in our lest of anon methods
-        if (!in_array($rest_method, $this->anonymous_rest_methods))
-            return;
-
-        // force input to rest status
-        $_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
-        // we are anonymous
-        $this->is_anonymous_authenticated = true;
+        if (in_array($rest_class, $this->anonymous_rest_methods)
+            or in_array($rest_method, $this->anonymous_rest_methods))
+        {
+            // force input to rest status
+            $_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+            // we are anonymous
+            $this->is_anonymous_authenticated = true;
+        }
 
     }
 
