@@ -37,7 +37,7 @@ class Promoter_General
         // add additional conditions
         $items_items_query->where($for_column_name, 'in', $for_ids)->order_by($for_column_name, 'ASC');
         // get items items
-        $items_items = $items_items_query->execute()->as_array();
+        $items_items = $items_items_query->execute('authority')->as_array();
 
         ////////////////////////
         // INITIAL GUT CHECKS //
