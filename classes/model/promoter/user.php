@@ -110,7 +110,7 @@ class Promoter_User extends \Auth\Model\Auth_User
     protected static function for_items($ids, $table_name, $column_name, &$permission_actions = null)
     {
         // get shared user ids
-        $shared_user_ids = Model_General::shared_item_ids_for_items($ids, $table_name, 'user_id', $column_name, $permission_actions);
+        $shared_user_ids = Promoter_General::shared_item_ids_for_items($ids, $table_name, 'user_id', $column_name, $permission_actions);
         // verify we have some
         if (count($shared_user_ids) == 0)
             return array();
