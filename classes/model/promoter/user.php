@@ -16,7 +16,7 @@ class Promoter_User extends \Auth\Model\Auth_User
             ->where('username', 'LIKE', $query . '%')
             ->as_object()
             ->execute(self::$_connection);
-        return Helper::extract_values('username', $users);
+        return \Helper::extract_values('username', $users);
     }
 
     public static function username($id)
