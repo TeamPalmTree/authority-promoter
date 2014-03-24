@@ -22,7 +22,7 @@ class Controller_Auth extends Controller_Hybrid
         // authenticate
         $this->authenticate($method);
         // forward
-        parent::router($method, $params);
+        return parent::router($method, $params);
 
     }
 
