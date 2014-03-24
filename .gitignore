@@ -12,6 +12,7 @@ build
 nbproject/
 /config/db.php
 /config/auth.php
+/config/opauth.php
 /config/ormauth.php
 /config/promoter.php
 /config/simpleauth.php
@@ -19,6 +20,7 @@ nbproject/
 /config/staging/db.php
 /config/production/db.php
 /config/*/auth.php
+/config/*/opauth.php
 /config/*/ormauth.php
 /config/*/promoter.php
 /config/*/simpleauth.php
