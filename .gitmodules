@@ -1,0 +1,3 @@
+[submodule "config"]
+	path = config
+	url = ssh://awgneo@teampalmtree.com:2200/home/tpt/git/configs/authority-promoter
