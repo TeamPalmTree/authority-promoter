@@ -16,6 +16,7 @@ nbproject/
 /config/ormauth.php
 /config/promoter.php
 /config/simpleauth.php
+/config/development/db.php
 /config/test/db.php
 /config/staging/db.php
 /config/production/db.php
