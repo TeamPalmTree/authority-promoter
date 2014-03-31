@@ -13,6 +13,8 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
 
     public function action_index()
     {
+        // make sure we are logged out
+        Auth::logout();
         // create view
         $view = View::forge('promoter/index');
         // set view url variables
@@ -23,6 +25,9 @@ class Controller_Promoter extends \Fuel\Core\Controller_Hybrid
         return Response::forge($view);
     }
 
+    /**
+     * Standard Username/Password Login
+     */
     public function action_login()
     {
         // if we got login data

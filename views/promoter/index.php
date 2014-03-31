@@ -24,15 +24,15 @@
             </div>
             <div class="promoter-login-form">
                 <?php echo Form::open(array('id' => 'welcome-form', 'action' => 'promoter/login?&redirect_url=' . urlencode($redirect_url), 'class' => 'form-horizontal')); ?>
-                <div class="form-group">
-                    <input name="username" type="text" class="form-control" placeholder="Username" />
-                </div>
-                <div class="form-group">
-                    <input name="password" type="password" class="form-control" placeholder="Password" />
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default btn-primary" form="welcome-form">LOGIN</button>
-                </div>
+                    <div class="form-group">
+                        <input name="username" type="text" class="form-control" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <input name="password" type="password" class="form-control" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default btn-primary" form="welcome-form">LOGIN</button>
+                    </div>
                 <?php echo Form::close(); ?>
             </div>
         </div>
